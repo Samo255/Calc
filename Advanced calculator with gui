@@ -1,0 +1,189 @@
+# you need to install play module - pip install play, if it doesnot work check "python play module" on google, in github theres how to install it
+
+# the calculator is free to copy, no need for any images and files, just start and do maths
+
+# importing modules
+import play
+
+# setting an expression
+expression = ""
+
+# definning what happens when user click on boxes
+def press(num): 
+    global expression
+    # this method will add number or +-*/ to the expression
+    expression = expression + str(num)
+
+# definniting what happens when user press equal (=)
+def equalpress():
+    try:
+        global expression
+        gui_equal_text.show()
+
+        # this method will take string, now the expression and print it as a mathematical sum
+        total = str(eval(expression))
+        print(total)
+
+        # this will make an equal text live
+        @play.repeat_forever
+        def repeat3():
+            gui_equal_text.words = total
+    except:
+        print("error")
+
+# this will clear the expression and equal text
+def clearMethod():
+    global expression
+    expression = ""
+    print(expression)
+    gui_equal_text.hide()
+
+
+
+# gui
+gui = play.new_box(color = "black", size = 250, angle = 90)
+gui_screen = play.new_box(color = "cyan", width = 500, height = 50, x = 0, y = 150, border_color="black", border_width=3)
+gui_screen_text = play.new_text(color = "black",x = 0, y = 150)
+gui_equal_text = play.new_text(color = "black",x = 200, y = 150)
+
+# buttons (numbers)
+button1 = play.new_box(color = "red", height=50,width=50, x = -225, y = 100)
+button2 = play.new_box(color = "red", height=50,width=50, x = -170, y = 100)
+button3 = play.new_box(color = "red", height=50,width=50, x = -115, y = 100)
+
+button4 = play.new_box(color = "red", height=50,width=50, x = -225, y = 45)
+button5 = play.new_box(color = "red", height=50,width=50, x = -170, y = 45)
+button6 = play.new_box(color = "red", height=50,width=50, x = -115, y = 45)
+
+button7 = play.new_box(color = "red", height=50,width=50, x = -225, y = -10)
+button8 = play.new_box(color = "red", height=50,width=50, x = -170, y = -10)
+button9 = play.new_box(color = "red", height=50,width=50, x = -115, y = -10)
+
+button0 = play.new_box(color = "red", height=50,width=50, x = -170, y = -65)
+
+
+
+
+number1 = play.new_text(color = "black", x = -225, y = 100, words = "1")
+number2 = play.new_text(color = "black", x = -170, y = 100, words = "2")
+number3 = play.new_text(color = "black", x = -115, y = 100, words = "3")
+
+number4 = play.new_text(color = "black", x = -225, y = 45, words = "4")
+number5 = play.new_text(color = "black", x = -170, y = 45, words = "5")
+number6 = play.new_text(color = "black", x = -115, y = 45, words = "6")
+
+number7 = play.new_text(color = "black", x = -225, y = -10, words = "7")
+number8 = play.new_text(color = "black", x = -170, y = -10, words = "8")
+number9 = play.new_text(color = "black", x = -115, y = -10, words = "9")
+
+number0 = play.new_text(color = "black", x = -170, y = -65, words = "0")
+
+
+
+
+
+# buttons(+-*/)
+buttonPlus = play.new_box(color = "red", height=50,width=50, x = -15, y = 100)
+buttonMinus = play.new_box(color = "red", height=50,width=50, x = -15, y = 45)
+buttonMultiply = play.new_box(color = "red", height=50,width=50, x = -15, y = -10)
+buttonDivision = play.new_box(color = "red", height=50,width=50, x = -15, y = -65)
+buttonEqual = play.new_box(color = "red", height=50,width=50, x = 105, y = 45)
+buttonClear = play.new_box(color = "red", height=50,width=50, x = 105, y = -65)
+
+
+
+buttonPlus2 = play.new_text(x = -15, y = 100, color = "black", words="+")
+buttonMinus2 = play.new_text(x = -15, y = 45, color = "black", words="-")
+buttonMultiply2 = play.new_text(x = -15, y = -10, color = "black", words="*")
+buttonDivision2 = play.new_text(x = -15, y = -65, color = "black", words="/")
+buttonEqual2 = play.new_text(x = 105, y = 45, color = "black", words="=", size = 100)
+buttonDivision2 = play.new_text(x = 105, y = -65, color = "black", words="///")
+
+
+
+# mechanism (button click detectors)
+@play.repeat_forever
+def repeat2():
+
+
+    if button1.is_clicked:
+        press(1)
+        print(expression)
+        gui_screen_text.words = expression
+    if button2.is_clicked:
+        press(2)
+        print(expression)
+        gui_screen_text.words = expression
+    if button3.is_clicked:
+        press(3)
+        print(expression)
+        gui_screen_text.words = expression
+    if button4.is_clicked:
+        press(4)
+        print(expression)
+        gui_screen_text.words = expression
+    if button5.is_clicked:
+        press(5)
+        print(expression)
+        gui_screen_text.words = expression
+    if button6.is_clicked:
+        press(6)
+        print(expression)
+        gui_screen_text.words = expression
+    if button7.is_clicked:
+        press(7)
+        print(expression)
+        gui_screen_text.words = expression
+    if button8.is_clicked:
+        press(8)
+        print(expression)
+        gui_screen_text.words = expression
+    if button9.is_clicked:
+        press(9)
+        print(expression)
+        gui_screen_text.words = expression
+    if button0.is_clicked:
+        press(0)
+        print(expression)
+        gui_screen_text.words = expression
+
+
+
+    if buttonPlus.is_clicked:
+        press("+")
+        print(expression)
+        gui_screen_text.words = expression
+    if buttonMinus.is_clicked:
+        press("-")
+        print(expression)
+        gui_screen_text.words = expression
+    if buttonMultiply.is_clicked:
+        press("*")
+        print(expression)
+        gui_screen_text.words = expression
+    if buttonDivision.is_clicked:
+        press("/")
+        print(expression)
+        gui_screen_text.words = expression
+
+
+    # Equal button detection
+    if buttonEqual.is_clicked:
+        equalpress()
+
+    # clear button detection
+    if buttonClear.is_clicked:
+        clearMethod()
+        gui_screen_text.words = expression
+
+# starting program if there is no problem
+play.start_program()
+
+
+
+
+
+
+
+
+# by: Samuel k.
